@@ -7,7 +7,7 @@ import (
 	"github.com/gorilla/sessions"
 )
 
-var store = sessions.NewCookieStore([]byte(os.Getenv("SESSION_SECRET")))
+var store = sessions.NewCookieStore([]byte(os.Getenv("APP_SESSION_SECRET")))
 
 // GetSession to return the session
 func GetSession(c *gin.Context) *sessions.Session {

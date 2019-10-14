@@ -1,0 +1,7 @@
+FROM applemann/mariadb:10.1
+
+COPY db.sql db.sql
+RUN /etc/init.d/mysql start && \
+    mysql -e "create database social_network;" && \
+    mysql -u root -ptest1 -h localhost social_network < db.sql
+

@@ -13,9 +13,11 @@ func DB() *sql.DB {
 
 	user := os.Getenv("DB_USER")
 	password := os.Getenv("DB_PASSWORD")
+	address := os.Getenv("DB_ADDRESS")
+	port := os.Getenv("DB_PORT")
 	_db := os.Getenv("DB")
 
-	db, _ := sql.Open("mysql", user+":"+password+"@tcp(127.0.0.1:3306)/"+_db)
+	db, _ := sql.Open("mysql", user+":"+password+"@tcp("+address+":"+port+")/"+_db)
 	err := db.Ping()
 	if err != nil {
 		panic(err)

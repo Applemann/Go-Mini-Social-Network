@@ -70,6 +70,6 @@ func main() {
 	server := negroni.Classic()
 	server.UseHandler(router)
 
-	server.Run(os.Getenv("PORT"))
+  server.Run(":" + os.Getenv("APP_PORT"))
 
 }

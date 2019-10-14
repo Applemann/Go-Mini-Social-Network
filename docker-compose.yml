@@ -1,0 +1,26 @@
+version: '3'
+services:
+  social-network:
+    build: .
+    image: social-network:latest
+    ports:
+    - "5000:5000"
+    external_links:
+    - mariadb
+    environment:
+    - "APP_PORT=5000"
+    - "APP_SESSION_SECRET=fjiwo4r349t"
+    - "DB_ADDRESS=mariadb"
+    - "DB_PORT=3306"
+    - "DB_USER=root"
+    - "DB_PASSWORD=test1"
+    - "DB=social_network"
+    #entrypoint: sleep 100000
+  mariadb:
+    #image: simpleservices/mariadb
+    image: social-network-mariadb:latest
+    build: 
+      context: .
+      dockerfile: Dockerfile-mariadb
+    ports:
+    - "3307:3306"
