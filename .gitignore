@@ -2,3 +2,6 @@ node_modules/
 tmp/
 vendor/
 .env
+__debug_bin
+public/users/
+main
