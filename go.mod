@@ -1,4 +1,4 @@
-module Go-Mini-Social-Network
+module github.com/Applemann/Go-Mini-Social-Network
 
 go 1.13
 

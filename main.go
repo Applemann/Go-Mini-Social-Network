@@ -1,7 +1,7 @@
 package main
 
 import (
-	R "Go-Mini-Social-Network/routes"
+	R "github.com/Applemann/Go-Mini-Social-Network/routes"
 	"os"
 
 	"github.com/joho/godotenv"

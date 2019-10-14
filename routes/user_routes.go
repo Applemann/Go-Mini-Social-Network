@@ -1,7 +1,7 @@
 package routes
 
 import (
-	CO "Go-Mini-Social-Network/config"
+	CO "github.com/Applemann/Go-Mini-Social-Network/config"
 	"net/http"
 	"os"
 	"strconv"

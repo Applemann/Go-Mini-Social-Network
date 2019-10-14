@@ -1,10 +1,11 @@
 package routes
 
 import (
-	CO "Go-Mini-Social-Network/config"
 	"os"
 	"strings"
 	"time"
+
+	CO "github.com/Applemann/Go-Mini-Social-Network/config"
 
 	"github.com/badoux/checkmail"
 	"github.com/gin-gonic/gin"
@@ -96,13 +97,19 @@ func ChangeAvatar(c *gin.Context) {
 	id, _ := CO.AllSessions(c)
 
 	dir, _ := os.Getwd()
-	dest := dir + "/public/users/" + id.(string) + "/avatar.png"
+	userDirectory := dir + "/public/users/" + id.(string)
+	userAvatarImage := userDirectory + "/avatar.png"
 
-	dErr := os.Remove(dest)
-	CO.Err(dErr)
+	_, err := os.Stat(userAvatarImage)
+	if os.IsExist(err) {
+		dErr := os.Remove(userAvatarImage)
+		CO.Err(dErr)
+	} else {
+		os.Mkdir(userDirectory, 0755)
+	}
 
 	file, _ := c.FormFile("avatar")
-	upErr := c.SaveUploadedFile(file, dest)
+	upErr := c.SaveUploadedFile(file, userAvatarImage)
 
 	if upErr != nil {
 		resp["mssg"] = "An error occured!!"
